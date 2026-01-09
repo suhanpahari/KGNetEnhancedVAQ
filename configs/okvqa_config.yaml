@@ -1,0 +1,38 @@
+# OK-VQA Configuration
+
+# Model settings
+blip_model: "Salesforce/blip2-opt-2.7b"
+freeze_vision: true
+
+summarizer_model: "google/flan-t5-large"
+
+llm_model: "meta-llama/Llama-3-8B-Instruct"
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+load_in_8bit: true
+
+# Architecture
+hidden_dim: 1024
+num_answers: 1000  # Can use generation instead
+
+# Retrieval (much higher for OK-VQA - requires external knowledge)
+retrieval_top_k: 20
+
+# Training
+batch_size: 8
+learning_rate: 5e-5
+num_epochs: 15
+warmup_ratio: 0.1
+weight_decay: 0.01
+
+# Data paths (update these)
+data_root: "../../data/coco/images/"
+questions_train: "../../data/okvqa/OpenEnded_mscoco_train2014_questions.json"
+questions_val: "../../data/okvqa/OpenEnded_mscoco_val2014_questions.json"
+annotations_train: "../../data/okvqa/mscoco_train2014_annotations.json"
+annotations_val: "../../data/okvqa/mscoco_val2014_annotations.json"
+kg_index_path: "../kg_data/"
+
+# OK-VQA specific
+use_generation: true  # Use generation mode for free-form answers

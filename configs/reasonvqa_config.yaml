@@ -1,0 +1,38 @@
+# ReasonVQA Configuration
+
+# Model settings
+blip_model: "Salesforce/blip2-opt-2.7b"
+freeze_vision: true
+
+summarizer_model: "google/flan-t5-large"
+
+llm_model: "meta-llama/Llama-3-8B-Instruct"
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+load_in_8bit: true
+
+# Architecture
+hidden_dim: 1024
+num_answers: 1000  # Generation mode
+
+# Retrieval (moderate for reasoning questions)
+retrieval_top_k: 15
+
+# Training
+batch_size: 4  # Smaller for generation
+learning_rate: 5e-5
+num_epochs: 10
+warmup_ratio: 0.1
+weight_decay: 0.01
+
+# Data paths (update these)
+data_root: "../../data/reasonvqa/images/"
+data_train: "../../data/reasonvqa/train.json"
+data_val: "../../data/reasonvqa/val.json"
+kg_index_path: "../kg_data/"
+
+# ReasonVQA specific
+use_generation: true  # Always use generation
+use_chain_of_thought: true  # Enable CoT reasoning
+max_reasoning_steps: 5

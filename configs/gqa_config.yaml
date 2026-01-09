@@ -1,0 +1,35 @@
+# GQA Configuration
+
+# Model settings
+blip_model: "Salesforce/blip2-opt-2.7b"
+freeze_vision: true
+
+summarizer_model: "google/flan-t5-large"
+
+llm_model: "meta-llama/Llama-3-8B-Instruct"
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+load_in_8bit: true
+
+# Architecture
+hidden_dim: 1024
+num_answers: 1878  # GQA answer classes
+
+# Retrieval (higher for knowledge-intensive questions)
+retrieval_top_k: 15
+
+# Training
+batch_size: 8
+learning_rate: 1e-4
+num_epochs: 15
+warmup_ratio: 0.1
+weight_decay: 0.01
+
+# Data paths (update these)
+data_root: "../../data/gqa/images/"
+questions_train: "../../data/gqa/train_balanced_questions.json"
+questions_val: "../../data/gqa/val_balanced_questions.json"
+scene_graphs: "../../data/gqa/scene_graphs.json"
+answer_vocab: "../../data/gqa/answer_vocab.json"
+kg_index_path: "../kg_data/"

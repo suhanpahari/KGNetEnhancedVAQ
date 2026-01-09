@@ -1,0 +1,34 @@
+# VQA v2.0 Configuration
+
+# Model settings
+blip_model: "Salesforce/blip2-opt-2.7b"
+freeze_vision: true
+
+summarizer_model: "google/flan-t5-large"
+
+llm_model: "meta-llama/Llama-3-8B-Instruct"
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+load_in_8bit: true
+
+# Architecture
+hidden_dim: 1024
+num_answers: 3129  # VQA v2.0 answer classes
+
+# Retrieval
+retrieval_top_k: 10
+
+# Training
+batch_size: 8
+learning_rate: 1e-4
+num_epochs: 20
+warmup_ratio: 0.1
+weight_decay: 0.01
+
+# Data paths (update these)
+data_root: "../../data/coco/images/"
+imdb_train: "../../data/imdb/imdb_mirror_train2014.npy"
+imdb_val: "../../data/imdb/imdb_minival2014.npy"
+answer_vocab: "../../data/answers_vqa.txt"
+kg_index_path: "../kg_data/"
